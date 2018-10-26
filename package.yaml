@@ -21,6 +21,11 @@ description:         Please see the README on Github at <https://github.com/gith
 
 dependencies:
 - base >= 4.7 && < 5
+- hspec
+
+ghc-options:
+  - -Wall
+  - -fwarn-tabs
 
 library:
   source-dirs:
@@ -30,10 +35,6 @@ executables:
   haskell-book-exe:
     main:                Main.hs
     source-dirs:         app
-    ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
     dependencies:
     - haskell-book
 
@@ -41,10 +42,6 @@ tests:
   haskell-book-test:
     main:                Spec.hs
     source-dirs:         test
-    ghc-options:
-    - -threaded
-    - -rtsopts
-    - -with-rtsopts=-N
     dependencies:
     - haskell-book
     - hspec
