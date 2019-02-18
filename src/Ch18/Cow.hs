@@ -52,4 +52,4 @@ module Ch18.Cow where
                     \agey ->
                         noNegative weight' >>=
                             \weighty ->
-                                weightCheck (Cow nammy agey weighty) 
+                                weightCheck (Cow nammy agey weighty)
