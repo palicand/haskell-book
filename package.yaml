@@ -23,7 +23,7 @@ dependencies:
 - base >= 4.7 && < 5
 - hspec
 - QuickCheck
-- checkers
+- checkers >=0.4.14 && < 1
 
 ghc-options:
   - -Wall
