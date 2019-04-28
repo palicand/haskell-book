@@ -15,7 +15,7 @@
 # resolver:
 #  name: custom-snapshot
 #  location: "./custom-snapshot.yaml"
-resolver: lts-13.5
+resolver: lts-13.15
 
 # User packages to be built.
 # Various formats can be used as shown in the example below.
@@ -39,9 +39,10 @@ packages:
 - .
 # Dependency packages to be pulled from upstream that are not in the resolver
 # (e.g., acme-missiles-0.3)
-extra-deps: [
-  checkers-0.4.14
-]
+extra-deps:
+  - checkers-0.4.14
+  - git: https://github.com/Magicloud/stack-run.git
+    commit: d116262
 
 # Override default flag values for local packages and extra-deps
 # flags: {}

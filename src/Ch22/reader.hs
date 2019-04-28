@@ -1,4 +1,4 @@
-module Ch19.Reader where
+module Ch22.Reader where
     import Control.Applicative
     import Data.Char
 

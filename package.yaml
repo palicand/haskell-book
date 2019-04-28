@@ -24,6 +24,9 @@ dependencies:
 - hspec
 - QuickCheck
 - checkers >=0.4.14 && < 1
+- transformers
+- dlist >= 0.8.0.6 && < 1.0.0.0
+- trifecta >=2 && < 3
 
 ghc-options:
   - -Wall
