@@ -41,8 +41,6 @@ packages:
 # (e.g., acme-missiles-0.3)
 extra-deps:
   - checkers-0.4.14
-  - git: https://github.com/Magicloud/stack-run.git
-    commit: d116262
 
 # Override default flag values for local packages and extra-deps
 # flags: {}

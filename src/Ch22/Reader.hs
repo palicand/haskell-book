@@ -8,6 +8,9 @@ module Ch22.Reader where
     bip :: Integer -> Integer
     bip = boop . doop
 
+    bloop :: Integer -> Integer
+    bloop = fmap boop doop
+
     bbop :: Integer -> Integer
     bbop = (+) <$> boop <*> doop
     
