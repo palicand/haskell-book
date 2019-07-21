@@ -15,8 +15,7 @@ module Ch24.LearnParsers where
     oneTwo' = oneTwo >> stop
 
     p123 :: Parser [Char]
-    p123 = do
-        (string "123" <|> string "12" <|> string "1")
+    p123 = choice [string "123", string "12", string "1"]
 
     testParse :: (Show a) => String -> Parser a -> IO ()
     testParse s p = print $ parseString p mempty s
