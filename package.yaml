@@ -28,6 +28,7 @@ dependencies:
 - trifecta >=2 && < 3
 - raw-strings-qq >= 1.1 && < 2
 - Decimal>=0.5.1 && < 1
+- scotty
 name: haskell-book
 version: 0.1.0.0
 extra-source-files:
