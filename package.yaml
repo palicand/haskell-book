@@ -1,39 +1,39 @@
 library:
   source-dirs:
-  - src
+    - src
 tests:
   haskell-book-test:
     source-dirs: test
     main: Spec.hs
     dependencies:
-    - haskell-book
-    - hspec
+      - haskell-book
+      - hspec
 copyright: 2018 Andrej Palicka
 maintainer: andrej.palicka@gmail.com
 ghc-options:
-- -Wall
-- -fwarn-tabs
+  - -Wall
+  - -fwarn-tabs
 dependencies:
-- aeson >= 1.4.2.0 && < 2
-- containers
-- bytestring
-- text
-- base >= 4.7 && < 5
-- hspec
-- QuickCheck
-- checkers >=0.4.14 && < 1
-- dlist >= 0.8.0.6 && < 1.0.0.0
-- transformers >= 0.5.6.2 && <1
-- random >= 1.1 && < 2
-- trifecta >=2 && < 3
-- raw-strings-qq >= 1.1 && < 2
-- Decimal>=0.5.1 && < 1
-- scotty
+  - aeson >= 1.4.2.0 && < 2
+  - containers
+  - bytestring
+  - text
+  - base >= 4.7 && < 5
+  - hspec
+  - QuickCheck
+  - checkers >=0.4.14 && < 1
+  - dlist >= 0.8.0.6 && < 1.0.0.0
+  - transformers >= 0.5.6.2 && <1
+  - random >= 1.1 && < 2
+  - trifecta >=2 && < 3
+  - raw-strings-qq >= 1.1 && < 2
+  - Decimal>=0.5.1 && < 1
+  - scotty
 name: haskell-book
 version: 0.1.0.0
 extra-source-files:
-- README.md
-- ChangeLog.md
+  - README.md
+  - ChangeLog.md
 author: Andrej Palicka
 github: palicand/haskell-book
 license: PublicDomain
@@ -42,5 +42,5 @@ executables:
     source-dirs: app
     main: Main.hs
     dependencies:
-    - haskell-book
+      - haskell-book
 description: Please see the README on Github at <https://github.com/githubuser/haskell-book#readme>
