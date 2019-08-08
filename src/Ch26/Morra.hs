@@ -1,5 +1,6 @@
 module Ch26.Morra where
 
+import           Control.Monad
 import           Control.Monad.Trans.State
 import           System.Random
 import           Control.Monad.IO.Class
@@ -18,6 +19,9 @@ type Morra = StateT GameState IO
 initialState :: GameState
 initialState = GameState (0, 0) []
 
+
+winningScore :: Int
+winningScore = 3
 
 askAndGenerateRandomAnswer :: String -> (Int, Int) -> IO (Int, Int)
 askAndGenerateRandomAnswer prompt range = do
@@ -38,25 +42,35 @@ getGuesses :: IO (Int, Int)
 getGuesses = askAndGenerateRandomAnswer "Guess the total of fingers: " (0, 10)
 
 
-evaluateGuesses :: Int -> Int -> Int -> Morra ()
-evaluateGuesses total humanGuess computerGuess = do
-    (GameState (humanPoints, computerPoints) r) <- get
-    let newScore =
-            ( if humanGuess == total then humanPoints + 1 else humanPoints
-            , if computerGuess == total then computerPoints + 1 else humanPoints
-            )
-    put (GameState newScore (Round (humanGuess, computerGuess) total : r))
+evaluateGuesses :: Int -> Int -> Int -> GameState -> GameState
+evaluateGuesses total humanGuess computerGuess (GameState (humanPoints, computerPoints) r)
+    = GameState newScore (Round (humanGuess, computerGuess) total : r)  where
+    newScore =
+        ( if humanGuess == total then humanPoints + 1 else humanPoints
+        , if computerGuess == total then computerPoints + 1 else humanPoints
+        )
+
 
 gameLoop :: Morra ()
 gameLoop = do
     (playerFingers, computerFingers) <- liftIO getFingers
     (playerGuess  , computerGuess  ) <- liftIO getGuesses
-    evaluateGuesses (playerFingers + computerFingers) playerGuess computerGuess
+    oldState                         <- get
+    let newState = evaluateGuesses (playerFingers + computerFingers)
+                                   playerGuess
+                                   computerGuess
+                                   oldState
+    put newState
     liftIO $ print ("Fingers shown: " ++ show (playerFingers + computerFingers))
     liftIO $ print
-        ("Human guessed " ++ show (playerGuess) ++ ", computer guessed " ++ show
-            (computerGuess)
+        (  "Human guessed "
+        ++ show playerGuess
+        ++ ", computer guessed "
+        ++ show computerGuess
         )
+    let (humanScore, computerScore) = score newState
+    unless (humanScore == winningScore || computerScore == winningScore)
+           gameLoop
 
 
 main :: IO ()
