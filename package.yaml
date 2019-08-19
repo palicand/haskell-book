@@ -38,8 +38,8 @@ author: Andrej Palicka
 github: palicand/haskell-book
 license: PublicDomain
 executables:
-  haskell-book-exe:
-    source-dirs: app
+  morra-exe:
+    source-dirs: morra
     main: Main.hs
     dependencies:
       - haskell-book
